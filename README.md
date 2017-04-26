@@ -23,23 +23,14 @@ Installation:
   Download source from github and run "auto" script with root permissions. Or download from empleador.pl/de/autodeb and run it. Same result :)
   
 Additional info:
-  - All scripts are opensource and even this not made by me, are easy avaiable in internet. DeCustom is rather pack of this tricks with some scripts made by me (eg demanager, dedm etc.). 
-  - DeCustom don't have (yet) any uninstall scripts. To delete it just remove DeCustom directory and restore you bashrc files
-  - DeCustom don't have any services running in background so its super light.
-  - Every update of DeCustom can be made in two ways
+  * All scripts are opensource and even this not made by me, are easy avaiable in internet. DeCustom is rather pack of this tricks with some scripts made by me (eg demanager, dedm etc.). 
+  * DeCustom don't have (yet) any uninstall scripts. To delete it just remove DeCustom directory and restore you bashrc files
+  * DeCustom don't have any services running in background so its super light.
+  * Every update of DeCustom can be made in two ways
     1. demanager -update (alias deupdate) automatic download and update from empleador.pl
     2. downloading from github and running auto script with -update argument.
-  - DeCustom have configuration file for installation under scripts/ directory.
-  - If you want to determine DeCustom path use "demanager -loc".
-  - If you want to support me by giving me advaice or just talk with me write to me email at: DsDeesu@gmail.com or Mateusz.Gooorski@gmail.com
-  - Directory tree of DeCustom(for devs):
-  ###########################################################
-  # /core                     {core files}                  #
-  # /plugins                                                #
-  #   /update                 {update scripts for plugins}  #
-  #   /files                  {plugins dump}                #
-  #       /$(plugin_name)                                   #
-  #   /recreate                                             #
-  #       /scripts            {recreate plugin scripts}     #
-  #       /files              {recreate plugin files}       #
-  ###########################################################
+  * DeCustom have configuration file for installation under scripts/ directory.
+  * If you want to determine DeCustom path use "demanager -loc".
+  * If you want to support me by giving me advaice or just talk with me write to me email at: DsDeesu@gmail.com or Mateusz.Gooorski@gmail.com
+  * Directory tree of DeCustom(for devs) is available inside auto script 
+  
