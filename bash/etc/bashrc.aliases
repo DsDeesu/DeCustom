@@ -1,0 +1,73 @@
+alias capt='/usr/bin/apt'
+alias apt='sudo apt'
+alias afy='sudo apt install -fy'
+alias capt-get='/usr/bin/apt-get'
+alias apt-get='sudo apt-get'
+alias au='sudo apt update'
+alias auu='sudo apt upgrade -fy'
+alias auuu='sudo apt update && sudo apt upgrade -fy'
+alias alu='apt list --upgradable'
+
+alias cdnf='dnf'
+alias dnf='sudo dnf'
+alias dfy='sudo dnf install -y'
+
+alias wifioff='sudo rfkill block wifi'
+alias wifion='sudo rfkill unblock wifi'
+alias wifire='wifioff && wifion'
+
+alias kerneldebugoff='sudo sysctl -w kernel.printk="2 4 1 7"'
+alias kerneldebugon='sudo sysctl -w kernel.printk="7 4 1 7"'
+
+alias ls='ls --color=auto'
+alias l='ls'
+alias lsl='l -l'
+alias lsla='lsl -a'
+alias ll='lsl'
+alias la='lsla'
+
+alias rmr='rm -r'
+alias rmrf='rmr -f'
+alias cp='cp -r'
+
+alias status='sudo service --status-all'
+alias statusp='sudo service --status-all | grep --color=auto +'
+
+alias psaux='ps aux | grep'
+alias netg='netstat | grep'
+
+alias decache='sync; echo 3 > /proc/sys/vm/drop_caches'
+
+alias chrome='/usr/bin/google-chrome-stable'
+
+alias nano='nano -c'
+
+alias kx='killall xinit'
+alias xk='xkill'
+
+#alias groot='sudo su -'
+alias groot='sudo su'
+
+alias ex='exit'
+alias pwoff='shutdown now'
+alias ts3='/opt/TeamSpeakClient/ts3client_runscript.sh'
+alias cl='clear'
+
+alias starwars='telnet towel.blinkenlights.nl'
+
+alias sr='screen -r'
+alias sl='screen -list'
+alias tl='tmux ls'
+alias ta='tmux a -t'
+alias tk='tmux kill-session -t'
+
+alias kexecinfo='cat /usr/bin/kexec-reboot | head -n 19'
+
+alias derefresh='source /etc/bashrc.aliases;source ~/.bashrc'
+alias deupdate='demanager -update'
+
+alias dechangelog='cat $(demanager -loc)/changelog'
+alias dever='echo "DeCustom Version: $(demanager -v)"'
+alias dehelp='demanager -h'
+alias decheck='demanager -check'
+alias calc='decalc'

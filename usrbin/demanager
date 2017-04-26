@@ -1,0 +1,129 @@
+#show location of DeCustom files
+if [ "$1" = "-loc" ]; then
+	echo $DePath
+	exit
+fi
+#
+
+#show version
+if [ "$1" = "-v" ]; then
+	cat $DePath/version
+	exit
+fi
+
+#Help Menu
+if [ "$1" = "-h" ] ||
+	[ "$1" = "--help" ] ||
+	[ "$#" = "0" ]; then
+		echo "Help for DeCustom"
+		echo 'Avaible aliases - type "alias" in terminal'
+		echo "Avaible commands:"
+		echo " demanager - DeCustom manager (type demanager -help-manager for more details)"
+		echo " dechromeupdate - chrome update for Debian based distros"
+		echo " demangler - demangle string (developers only)"
+		echo " kexec-reboot - script made by Isaac G. for kexec-tools (software restart), more info: kexecinfo"
+		echo 
+		echo
+		echo "Written by Mateusz G"
+		echo "Contact: Mateusz.Gooorski@gmail.com"
+		echo "Github: https://github.com/DsDeesu"
+		exit
+fi
+
+#DeManager help menu
+if [ "$1" = "-help-manager" ]; then
+	echo "Help fot DeManager"
+	echo "Avaible arguments:"
+	echo " -check to check avaible updates (core and plugins)"
+	echo " -update to update DeCustom"
+	echo " -core to check avaible update for core"
+	echo " -plugins to check avaible update for plugins"
+	echo " -recreate to recreate DeCustom envirionment"
+	echo " -loc to get location for DeCustom files"
+	exit
+fi
+
+#killers
+if [ "$(id -u)" != "0" ]; then
+ echo 'You must run this script as root'
+ exit
+fi
+#end of killers
+
+#setting auto flag (for updates, scritps)
+export AUTO=true
+export DEMANAGER=true
+#
+
+#include area
+source "$DePath/core/lib/delib.sh"
+#
+
+#Check arguments and set flags
+for i in $*
+do
+	CheckArguments $i
+	if [ "$DEMANAGER_ARG_NOTFOUND" = "true" ]; then
+		echo "DeManager: Error invalid argument: $i"
+		exit
+	fi
+done
+#
+
+function UpdateCheck()
+{
+	DeCoreUpdateCheck
+	if [ "$deCoreVerFromServer" != "$(cat $DePath/version)" ]; then
+		echo "DeCore: Found new version $deCoreVerFromServer. If you wish to update, type \"demanager -update\""
+	else
+		echo "DeCore: You have newest version DeCustom: $(cat $DePath/version)"
+	fi
+	################################################################
+	#FOR DEVELOPERS - REMEBER TO CHECK FLAG: "DEMANAGER_ARG_CHECK" #
+	# AND THEN JUST CHECK FOR NEW VERSIONS #########################
+	########################################
+	if [ "$(ls $DePath/plugins/update/ | grep .update | wc -l)" != "0" ]; then
+		$DePath/plugins/update/*.update
+	fi
+}
+
+function UpdateCore()
+{
+	$DePath/core/scripts/updateCore.sh
+}
+function UpdatePlugins()
+{
+	if [ "$(ls $DePath/plugins/update/ | grep .update | wc -l)" != "0" ]; then
+		$DePath/core/scripts/updatePlugins.sh
+	fi
+}
+function RecreateCore()
+{
+	$DePath/core/scripts/recreateCore.sh
+}
+function RecreatePlugins()
+{
+	if [ "$(ls $DePath/plugins/recreate/scripts/ | grep .recreate | wc -l)" != "0" ]; then
+ 		$DePath/core/scripts/recreatePlugins.sh
+ 	fi
+}
+
+
+if [ "$DEMANAGER_ARG_UPDATE" = "true" ]; then
+	UpdateCore
+	UpdatePlugins
+	RecreateCore
+	RecreatePlugins
+elif [ "$DEMANAGER_ARG_CORE" = "true" ]; then
+	UpdateCore
+	RecreatePlugins
+elif [ "$DEMANAGER_ARG_PLUGINS" = "true" ]; then
+	UpdatePlugins
+	RecreateCore
+	RecreatePlugins
+elif [ "$DEMANAGER_ARG_RECREATE" = "true" ]; then
+	RecreateCore
+	RecreatePlugins
+elif [ "$DEMANAGER_ARG_CHECK" = "true" ]; then
+	UpdateCheck
+fi

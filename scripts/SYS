@@ -1,0 +1,12 @@
+#system variables do NOT edit, untill you don't know what are you DOING
+
+SYSTEMBASHRC=false
+USERSBASHRC=false
+SYSTEMXINITRC=false
+USERSXINITRC=false
+USRBIN=false
+APTCOMPLETION=false
+
+DEBUG=false
+UPDATE=false
+ALL=false

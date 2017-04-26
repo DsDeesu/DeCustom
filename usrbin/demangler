@@ -1,0 +1,6 @@
+#!/bin/bash
+#cat > /tmp/demangle_file
+echo $1 > /tmp/demangle_file
+curl --data-urlencode input@/tmp/demangle_file https://demangler.com/raw
+rm /tmp/demangle_file
+

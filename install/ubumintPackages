@@ -1,0 +1,11 @@
+#!/bin/bash
+if [ "$(id -u)" != "0" ]; then
+ echo 'You must run this script as root'
+ exit
+fi
+apt update
+apt upgrade -fy
+apt install -fy arc-theme redshift guake mplayer2
+dechromeupdate
+apt install -fy kexec-tools cifs-utils samba samba-common samba-common-bin ssh ufw leafpad gcc make gimp ack libc++ git g++ build-essential youtube-dl arandr audacity screen gparted
+echo SUBLIME!!!

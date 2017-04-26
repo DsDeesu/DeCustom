@@ -1,0 +1,18 @@
+#!/bin/bash
+if [ "$(id -u)" != "0" ]; then
+ echo 'You must run this script as root'
+ exit
+fi
+#killall chrome
+mkdir /tmp/dechromeupdate.d
+pwd > /tmp/dechromeupdate.d/loc
+cd /tmp/dechromeupdate.d
+
+#apt purge -fy google-chrome-stable
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+killall chrome
+dpkg -i google-chrome*.deb
+apt install -fy
+
+cd $(cat /tmp/dechromeupdate.d/loc)
+rm -rf /tmp/dechromeupdate.d

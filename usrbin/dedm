@@ -1,0 +1,17 @@
+#!/bin/bash
+#Simple Display Manager switcher (see xinitrc)
+echo NULL > ~/.dm
+dmpath="~/.dm"
+case "$1" in
+        "lxde") echo "lxde" > $dmpath;;
+        "mate") echo "mate" > $dmpath;;
+        "openbox") echo "openbox" > $dmpath;;
+esac
+
+if [ "$(cat $dmpath)" = "NULL" ]; then
+	echo "Choose which display manager you wish to start: "
+	echo "lxde, mate or openbox"
+else
+	 startx
+fi
+

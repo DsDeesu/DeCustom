@@ -1,0 +1,12 @@
+#!/bin/bash
+if [ "$1" = "-h" ] ||
+	[ "$1" = "--help" ] ||
+	 [ "$#" = "0" ]; then
+		echo "decalc [bash_schema_math_probl]"
+		echo "	eg. decalc 22+22, decalc 4/2, decalc 3*1024"
+		echo "	w/o spaces!!"
+		exit 0
+fi
+
+echo $(($1))
+

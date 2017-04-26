@@ -1,0 +1,28 @@
+#Config file
+#Change those variables to change location for specific items, change only if you have real need
+
+#Apt Completions Location
+AptLoc='/usr/share/bash-completion/completions'
+#User binaries location
+UsrBinLoc='/usr/bin'
+#System main bashrc file location (IMPORTANT)
+SysBashLoc='/etc/'
+#User bashrc file ($HOME/$UsrBashLoc)
+UsrBashLoc='.bashrc'
+#System xinitrc file location
+SysXinitLoc='/etc/skel/.xinitrc'
+#User xinitrc file location ($HOME/$UsrXinitLoc)
+UsrXinitLoc='.xinitrc'
+
+#Frome which bashrc file user should source configs
+#bashrc - fedora
+#bash.bashrc - others
+SRC="source /etc/bash.bashrc"
+
+#wget args
+wga='-q --show-progress'
+
+#DeSoft var's (REALLY DANGEROUS)
+DePath='/etc/DeFiles'
+#DeCustom Version
+VER=$(cat scripts/ver)

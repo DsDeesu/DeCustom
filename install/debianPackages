@@ -1,0 +1,10 @@
+#!/bin/bash
+if [ "$(id -u)" != "0" ]; then
+ echo 'You must run this script as root'
+ exit
+fi
+service lightdm stop
+apt update
+apt upgrade -fy
+apt install -fy lxde lxde-core lxde-common lxde-icon-theme kexec-tools guake cifs-utils rfkill samba samba-common samba-common-bin ssh openvpn screen xcompmgr leafpad ntfs-3g exfat-fuse exfat-utils ufw auto-complete-el command-not-found pm-utils
+update-command-not-found

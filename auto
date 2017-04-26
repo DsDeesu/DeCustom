@@ -1,0 +1,130 @@
+#!/bin/bash
+
+#killers
+	#RootPrivilage
+if [ "$(id -u)" != "0" ]; then
+ echo 'You must run this script as root'
+ exit
+fi
+
+	#Checking directory
+if [ ! -e  ./auto ]; then
+ echo 'Script was not started in deb.d, trying catch deb.d'
+ if [ ! -e ./deb.d/auto ]; then
+  echo 'Probing failed, please start script in deb.d'
+  exit
+ fi
+ echo 'Found deb.d!'
+ cd deb.d
+fi
+
+	#Check if the user have DeCustom installed
+if [ -e /usr/bin/demanager ] &&
+	[ "$AUTO" != "true" ]; then
+	echo "You have installed DeCustom, if you wish to upgrade use \"demanager -update\" instead of this script"
+	exit
+fi
+#end of killers
+
+
+#set flag "auto" needed by plugins etc
+AUTO=true
+#
+
+#include area
+source "scripts/SYS"
+source "scripts/config"
+source "scripts/check.sh"
+source "scripts/debug.sh"
+source "scripts/functions.sh"
+source "scripts/clean.sh"
+#
+
+#Keep DeCustom working when updating
+Maint
+
+#Check arguments
+for i in $*
+do
+	CheckIf $i
+done
+#
+
+#make files for recreate
+ tar czf core.tar.gz *
+#
+
+
+###########################################################
+# /core                     {core files}                  #
+# /plugins                                                #
+#   /update                 {update scripts for plugins}  #
+#   /files                  {plugins dump}                #
+#       /$(plugin_name)                                   #
+#   /recreate                                             #
+#       /scripts            {recreate plugin scripts}     #
+#       /files              {recreate plugin files}       #
+###########################################################
+
+#Making directories for DeCustom
+mkdir -p $DePath/{core{/scripts,/lib},plugins{/update,/files,/recreate{/scripts,/files}}}
+mv core.tar.gz $DePath/core/
+#
+
+#Setting verision
+echo $VER > $DePath/version
+cp changelog $DePath/
+#
+
+#Build demanager file
+echo -e '#!/bin/bash'"\nDePath=\"$DePath\"\nwga='$wga'\n$(cat usrbin/demanager)" > usrbin/demanager
+#
+
+#Function Area
+	#Copy necessary files for Core
+function CoreDo()
+{
+	cp scripts/demanager/*lib* $DePath/core/lib/
+	cp scripts/demanager/* $DePath/core/scripts/
+}
+#
+
+#Sets of functions in packs: Update, all and default
+chown -R root:root *
+if [ "$UPDATE" = "true" ]; then #Update
+	CoreDo
+	AptDo
+	UsrBinDo
+	SysBashDo
+	SysXinitDo
+	SkelDo
+elif [ "$ALL" = "true" ]; then #All
+	CoreDo
+	AptDo
+	UsrBinDo
+	SysBashDo
+	UsrBashDo
+	SysXinitDo
+	UsrXinitDo
+	SkelDo
+else #Default
+	CoreDo
+	Apt
+	UsrBin
+	SysBash
+	UsrBash
+	SysXinit
+	UsrXinit
+	Skel
+fi
+#
+
+touch /etc/bashrc.useraddons
+chmod 644 /etc/bashrc.useraddons
+
+
+#Debugging (shows flags status)
+if [ "$DEBUG" = "true" ]; then
+	Debug
+fi
+#
