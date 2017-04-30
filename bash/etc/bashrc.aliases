@@ -44,6 +44,7 @@ alias nano='nano -c'
 
 alias kx='killall xinit'
 alias xk='xkill'
+alias ka='killall'
 
 #alias groot='sudo su -'
 alias groot='sudo su'
