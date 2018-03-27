@@ -6,6 +6,7 @@ SYSTEMXINITRC=false
 USERSXINITRC=false
 USRBIN=false
 APTCOMPLETION=false
+DOROOT=false
 
 DEBUG=false
 UPDATE=false

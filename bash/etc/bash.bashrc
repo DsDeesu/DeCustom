@@ -113,11 +113,17 @@ if ! shopt -oq posix; then
 fi
 
 source /etc/bashrc.aliases
-source /etc/bashrc.addons
-source /etc/bashrc.commandnotfound
+
+#only when package command-not-found is installed
+#source /etc/bashrc.commandnotfound
+
+#fedora original
+#source /etc/bashrc.addons
 
 
 #File where user can put their system configs (w/o plugins)
 #This file is created by touch command, and when DeCustom is being updated is not changing.
+
+bind 'set mark-symlinked-directories off'
 
 source /etc/bashrc.useraddons

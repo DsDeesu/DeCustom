@@ -10,8 +10,7 @@ fi
 #Executable functions
 function AptDo
 {
-	mv ./aptauto/apt* $AptLoc
-	mv ./aptauto/afy $AptLoc
+	mv ./aptauto/* $AptLoc
 }
 
 function UsrBinDo
@@ -47,9 +46,18 @@ function UsrXinitDo
 
 function SkelDo
 {
-	echo "source /etc/bash.bashrc" > /etc/skel/.bashrc
+	echo "source /etc/bashrc" > /etc/skel/.bashrc
 	echo "source ~/.bashrc" > /etc/skel/.profile
 }
+
+function De_RootDO
+{
+	touch $DePath/core/root
+        echo "source /etc/bashrc" >> /root/.bashrc
+        echo "source ~/.bashrc" >> /root/.profile
+}
+
+
 #
 
 #############################################
@@ -143,6 +151,19 @@ function Skel
                 read decs
                 if [ "$decs" = "" ] || [ "$decs" = "Y" ] || [ "$decs" = "y" ]; then
                         SkelDo
+                fi
+        fi
+}
+
+function De_Root
+{
+	if [ "$DOROOT" = "true" ]; then
+		De_RootDO
+	else
+                echo 'Would you like to configure root user too? [Y]/N'
+                read decs
+                if [ "$decs" = "" ] || [ "$decs" = "Y" ] || [ "$decs" = "y" ]; then
+                        De_RootDO
                 fi
         fi
 }

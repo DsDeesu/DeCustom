@@ -107,6 +107,7 @@ elif [ "$ALL" = "true" ]; then #All
 	SysXinitDo
 	UsrXinitDo
 	SkelDo
+	De_Root
 else #Default
 	CoreDo
 	Apt
@@ -116,6 +117,7 @@ else #Default
 	SysXinit
 	UsrXinit
 	Skel
+	De_Root
 fi
 #
 

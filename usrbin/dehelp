@@ -1,0 +1,13 @@
+#!/bin/bash
+echo "Help for DeCustom"
+echo "Avaible aliases - type "alias" in terminal"
+echo "Avaible commands:"
+echo " dechromeupdate - chrome update for Debian based distros"
+echo " demangler - demangle string (developers only)"
+echo " decheck - check for new version DeCustom (only check, without download)"
+echo " deuptade - update DeCustom"
+echo " kexec-reboot - script made by Isaac G. for kexec-tools (software restart), more info: kexecinfo"
+echo 
+echo
+echo "Written by Mateusz G"
+echo "Contact: Mateusz.Gooorski@gmail.com"

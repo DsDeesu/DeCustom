@@ -1,5 +1,5 @@
 #!/bin/bash
-#Simple Display Manager switcher (see xinitrc)
+#Simple Display Manager switcher (see .xinitrc)
 echo NULL > ~/.dm
 dmpath="~/.dm"
 case "$1" in

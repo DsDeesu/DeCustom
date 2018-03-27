@@ -1,4 +1,44 @@
-***2.38***
+***2.52***
+iptl = iptl + -v
+
+***2.51***
+alias iptl='iptables -L --line-numbers'
+
+***2.50***
+alias ipt='iptables'
+
+***2.49***
+removed alias ts3
+
+***2.48***
+added bind 'set mark-symlinked-directories off' to bash.bashrc
+commented commandnotfound as default
+
+***2.47***
+added bash completition for dfy (dnf install -y)
+
+***2.46***
+/etc/bashrc.addons is now optional (laggy on ubuntu 17.10)
+new comment on /etc/bashrc.commandnotfound (userful: comment it when command-not-found package isn't installed)
+
+***2.44***
+new alias free = free -h
+
+***2.43***
+new alias sctl = systemctl
+new bashcompletition for sctl
+repaired AptDo functions
+
+***2.41***
+new alias e = ex = exit
+
+***2.4***
+new alias gcp (gcp -r)
+
+***2.39***
+new alias tn (tmux new -s)
+
+***2.37***
 new alias ka (killall)
 
 ***2.36***

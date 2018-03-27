@@ -8,6 +8,10 @@ alias auu='sudo apt upgrade -fy'
 alias auuu='sudo apt update && sudo apt upgrade -fy'
 alias alu='apt list --upgradable'
 
+alias sctl='systemctl'
+alias ipt='iptables'
+alias iptl='ipt -L --line-numbers -v'
+
 alias cdnf='dnf'
 alias dnf='sudo dnf'
 alias dfy='sudo dnf install -y'
@@ -29,6 +33,7 @@ alias la='lsla'
 alias rmr='rm -r'
 alias rmrf='rmr -f'
 alias cp='cp -r'
+alias gcp='gcp -r'
 
 alias status='sudo service --status-all'
 alias statusp='sudo service --status-all | grep --color=auto +'
@@ -50,8 +55,8 @@ alias ka='killall'
 alias groot='sudo su'
 
 alias ex='exit'
+alias e='ex'
 alias pwoff='shutdown now'
-alias ts3='/opt/TeamSpeakClient/ts3client_runscript.sh'
 alias cl='clear'
 
 alias starwars='telnet towel.blinkenlights.nl'
@@ -61,6 +66,7 @@ alias sl='screen -list'
 alias tl='tmux ls'
 alias ta='tmux a -t'
 alias tk='tmux kill-session -t'
+alias tn='tmux new -s'
 
 alias kexecinfo='cat /usr/bin/kexec-reboot | head -n 19'
 
@@ -72,3 +78,5 @@ alias dever='echo "DeCustom Version: $(demanager -v)"'
 alias dehelp='demanager -h'
 alias decheck='demanager -check'
 alias calc='decalc'
+
+alias free='free -h'
