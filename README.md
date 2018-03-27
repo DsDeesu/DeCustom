@@ -1,6 +1,6 @@
 # DeCustom
 
-Little linux customize pack with plugins support. DeCustom offers (in default) colored bash, pack of aliases, plugins support and some useful scripts. For eg we have simple Display Manager switcher from TTY (dedm) and much more.
+Little linux customize pack with plugin support. DeCustom offers (in default) colored bash, pack of aliases, plugins support and some useful scripts. For eg we have simple Display Manager switcher from TTY (dedm) and much more.
 
 ### Features:
   So what are the features of DeCustom? At first, we have modified /etc/{bashrc,bash.bashrc} with colored linux prompt used from Linux Mint and Fedora. Next we have pack of aliases (eg afy = "apt install -fy" etc.). And /etc/bashrc.useraddons which is "user area" where user can add his own modification without writing plugin (read Plugin section for more info). Also we have apt and afy autocompletition. And modified xinitrc.
